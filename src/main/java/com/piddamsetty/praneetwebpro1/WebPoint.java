@@ -16,11 +16,13 @@ public class WebPoint {
 
     FileServices fileServices = new FileServices();
     PiServices piServices = new PiServices();
+    String template = fileServices.resourceFileRead("template");
 
     @RequestMapping("/")
     public String root() {
         System.out.println("New request for home");
-        return fileServices.resourceFileRead("index.html");
+        String content = fileServices.resourceFileRead("index.html");
+        return template.replace("##bodycontent##",content);
     }
 
     @RequestMapping("/blog/{page}")
