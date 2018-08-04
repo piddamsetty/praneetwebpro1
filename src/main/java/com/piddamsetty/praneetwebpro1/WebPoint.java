@@ -19,13 +19,14 @@ public class WebPoint {
     String template = fileServices.resourceFileRead("template");
 
     public String applyTemplate(String content) {
-        return template.replace("##bodycontent##",content);
+        String t1 = template.replace("##leftLinks##","<li><a href=\"#\">/</a></li>");
+        return t1.replace("##bodycontent##",content);
     }
 
     @RequestMapping("/")
     public String root() {
         System.out.println("New request for home");
-        String content = fileServices.fileReader("index.html");
+        String content = fileServices.readFromInputStream("index.html");
         return applyTemplate(content);
     }
 
