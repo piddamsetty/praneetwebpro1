@@ -20,7 +20,7 @@ public class WebPoint {
     @RequestMapping("/")
     public String root() {
         System.out.println("New request for home");
-        return fileServices.resourceFileRead("home.html");
+        return fileServices.resourceFileRead("index.html");
     }
 
     @RequestMapping("/blog/{page}")
