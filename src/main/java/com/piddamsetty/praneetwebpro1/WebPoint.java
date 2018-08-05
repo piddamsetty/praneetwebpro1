@@ -26,7 +26,7 @@ public class WebPoint {
     @RequestMapping("/")
     public String root() {
         System.out.println("New request for home");
-        String content = fileServices.readFromInputStream("index.html");
+        String content = fileServices.resourceFileRead("index.html");
         return applyTemplate(content);
     }
 

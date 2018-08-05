@@ -7,22 +7,6 @@ import java.io.*;
  */
 public class FileServices {
 
-    public String fileReader(String fileName) {
-        StringBuilder contentBuilder = new StringBuilder();
-        try {
-            BufferedReader in = new BufferedReader(new FileReader(fileName));
-            String str;
-            while ((str = in.readLine()) != null) {
-                contentBuilder.append(str);
-            }
-            in.close();
-        } catch (IOException e) {
-            System.out.println("Error while reading from file: " + fileName + " Exception:  " + e.getMessage());
-        }
-        String content = contentBuilder.toString();
-        return content;
-    }
-
     private String readFromInputStream(InputStream inputStream)
             throws IOException {
         StringBuilder resultStringBuilder = new StringBuilder();
