@@ -1,7 +1,6 @@
 package com.piddamsetty.praneetwebpro1;
 
 import com.piddamsetty.praneetwebpro1.services.FileServices;
-import com.piddamsetty.praneetwebpro1.services.PiServices;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +14,6 @@ import java.util.Random;
 public class WebPoint {
 
     FileServices fileServices = new FileServices();
-    PiServices piServices = new PiServices();
     String template = fileServices.resourceFileRead("template");
 
     public String applyTemplate(String content) {
@@ -33,7 +31,8 @@ public class WebPoint {
     @RequestMapping("/blog/{page}")
     public String getPage(@PathVariable String page) {
         System.out.println("New request to get blog for page: "+page);
-        return fileServices.resourceFileRead(page);
+        String content = fileServices.resourceFileRead(page);
+        return applyTemplate(content);
     }
 
     @RequestMapping("/friends")
